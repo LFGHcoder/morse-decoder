@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morse Decoder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Morse Decoder</h1>
+    <p class="subtitle">Convert Morse code into readable text</p>
+  </header>
+
+  <main class="app-main">
+    <section class="panel">
+      <label for="morseInput" class="field-label">Morse Input</label>
+      <textarea
+        id="morseInput"
+        class="textarea"
+        placeholder="Type or paste Morse code here.&#10;Use '.' and '-' with spaces between letters and three spaces or new lines between words."
+        rows="8"
+      ></textarea>
+    </section>
+
+    <section class="panel">
+      <label for="decodedOutput" class="field-label">Decoded Output</label>
+      <pre id="decodedOutput" class="output" aria-live="polite"></pre>
+    </section>
+
+    <section class="controls">
+      <button id="decodeButton" class="btn primary">Decode</button>
+      <button id="clearButton" class="btn">Clear</button>
+      <button id="copyButton" class="btn ghost">Copy Output</button>
+    </section>
+
+    <section id="messageArea" class="messages" aria-live="polite"></section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Supports A–Z and 0–9. Spaces separate letters, three spaces or new lines separate words.</p>
+  </footer>
+
+  <script src="morse.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
