@@ -8,37 +8,48 @@
 </head>
 <body>
   <header class="app-header">
-    <h1>Morse Decoder</h1>
-    <p class="subtitle">Convert Morse code into readable text</p>
+    <h1>Morse Decoder 🔊</h1>
+    <p class="subtitle">Convert Morse code into readable text - or encode text back into Morse.</p>
   </header>
 
   <main class="app-main">
-    <section class="panel">
-      <label for="morseInput" class="field-label">Morse Input</label>
-      <textarea
-        id="morseInput"
-        class="textarea"
-        placeholder="Type or paste Morse code here.&#10;Use '.' and '-' with spaces between letters and three spaces or new lines between words."
-        rows="8"
-      ></textarea>
+    <section class="panel mode-panel">
+      <span class="field-label">Mode:</span>
+      <div class="mode-toggle" role="group" aria-label="Decode or Encode mode">
+        <button type="button" id="modeDecode" class="mode-btn active" aria-pressed="true">Decode</button>
+        <button type="button" id="modeEncode" class="mode-btn" aria-pressed="false">Encode</button>
+      </div>
     </section>
 
     <section class="panel">
-      <label for="decodedOutput" class="field-label">Decoded Output</label>
+      <label for="morseInput" id="inputLabel" class="field-label">Morse Input</label>
+      <textarea id="morseInput" class="textarea" placeholder="Morse: use . - and spaces" rows="6"></textarea>
+      <p class="helper-text">Tip: Use "." and "-" for Morse. Separate letters with spaces.</p>
+    </section>
+
+    <section class="panel">
+      <label for="decodedOutput" id="outputLabel" class="field-label">Decoded Output</label>
       <pre id="decodedOutput" class="output" aria-live="polite"></pre>
     </section>
 
     <section class="controls">
-      <button id="decodeButton" class="btn primary">Decode</button>
-      <button id="clearButton" class="btn">Clear</button>
-      <button id="copyButton" class="btn ghost">Copy Output</button>
+      <button type="button" id="decodeButton" class="btn btn-primary">Decode</button>
+      <button type="button" id="encodeButton" class="btn btn-secondary">Encode</button>
+      <button type="button" id="clearButton" class="btn btn-neutral">Clear</button>
+      <button type="button" id="copyButton" class="btn btn-ghost">Copy Output</button>
+      <button type="button" id="playButton" class="btn btn-play" disabled title="Play the Morse code in the output">Play Morse 🔊</button>
     </section>
 
     <section id="messageArea" class="messages" aria-live="polite"></section>
+
+    <section class="history-panel">
+      <h2 class="history-title">Recent Translations</h2>
+      <ul id="historyList" class="history-list" aria-live="polite"></ul>
+    </section>
   </main>
 
   <footer class="app-footer">
-    <p>Supports A–Z and 0–9. Spaces separate letters, three spaces or new lines separate words.</p>
+    <p>Supports A–Z and 0–9. Spaces between letters, three spaces or new lines separate words.</p>
   </footer>
 
   <script src="morse.js"></script>
